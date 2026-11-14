@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
-<title>Auto Regression Model NBA Test</title>
+<title>Auto-Regressive Model NBA Test</title>
 <style>
 body {font: 16px system-ui,sans-serif; background:#f4f5f8;color:#182332;margin:0}
 main {max-width:1120px;margin:auto;padding:36px 20px}
@@ -14,7 +14,8 @@ td,th {vertical-align:top} .catalog th[scope="row"] {width:30%}
 details {margin-top:20px} summary {cursor:pointer;font-weight:650}
 </style>
 <main>
-<h1>Auto Regression Model NBA Test</h1>
+<h1>Auto-Regressive Model NBA Test</h1>
+<p><a href="https://github.com/ethanvoellmicke/auto-regressive-model-nba-test">View Python source on GitHub</a></p>
 <p>The boosted trees learn point margins from <b>2014–15 through 2023–24</b>.
 The <b>2024–25</b> season calibrates win probabilities. The model stays fixed for the <b>2025–26</b> test.</p>
 <section class="catalog"><h2>Measured inputs and derived variables</h2>
@@ -69,7 +70,7 @@ correct picks (68.92%) on 2025–26.</p></section>
 <p>The four season results above come from separate fits with rolling training windows. The table here follows one fit as it adds trees.</p>
 </section>
 <section><h2>Where to look in the code</h2>
-<ol><li><code>basketball.py</code> builds features from earlier games.</li>
-<li><code>compare_training.py</code> builds the matchup row, trains the trees and calibrates probabilities.</li>
-<li><code>show_model.py</code> runs the model and creates this report.</li></ol></section>
+<ol><li><a href="https://github.com/ethanvoellmicke/auto-regressive-model-nba-test/blob/main/basketball.py"><code>basketball.py</code></a> builds features from earlier games.</li>
+<li><a href="https://github.com/ethanvoellmicke/auto-regressive-model-nba-test/blob/main/compare_training.py"><code>compare_training.py</code></a> builds the matchup row, trains the trees and calibrates probabilities.</li>
+<li><a href="https://github.com/ethanvoellmicke/auto-regressive-model-nba-test/blob/main/show_model.py"><code>show_model.py</code></a> runs the model and creates this report.</li></ol></section>
 </main></html>
