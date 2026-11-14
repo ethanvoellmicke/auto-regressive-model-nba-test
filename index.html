@@ -16,8 +16,20 @@ details {margin-top:20px} summary {cursor:pointer;font-weight:650}
 <main>
 <h1>Auto-Regressive Model NBA Test</h1>
 <p><a href="https://github.com/ethanvoellmicke/auto-regressive-model-nba-test/blob/main/compare_training.py">View model code on GitHub</a></p>
-<p>The boosted trees learn point margins from <b>2014–15 through 2023–24</b>.
-The <b>2024–25</b> season calibrates win probabilities. The model stays fixed for the <b>2025–26</b> test.</p>
+<section id="model-stages" aria-labelledby="model-stages-heading">
+<h2 id="model-stages-heading">From training to testing</h2>
+<ol>
+<li><h3>Train on ten seasons · 2014–15 through 2023–24</h3>
+<p>The boosted trees use pregame stats and actual final scores from 12,795 games to learn the point margin. A prediction of +7 means the home team is projected to win by seven points.</p>
+<p><strong>LLM analogy</strong> This is like the main training phase, when a language model learns to predict the next token from the words it has seen.</p></li>
+<li><h3>Calibrate on the next season · 2024–25</h3>
+<p>The trees stay fixed. A separate logistic regression uses predicted margins and actual winners from 1,315 games to learn what win probability to assign to a margin like +7.</p>
+<p><strong>LLM analogy</strong> Freeze the language model and use held-out examples to learn how often answers at a given confidence level are correct.</p></li>
+<li><h3>Test on a later season · 2025–26</h3>
+<p>Both models stay fixed. The system uses pregame data to pick the team with the higher win probability. It picked 907 of 1,316 winners correctly (68.92%).</p>
+<p><strong>LLM analogy</strong> Score the frozen system on questions reserved for the final evaluation.</p></li>
+</ol>
+</section>
 <section class="catalog"><h2>Measured inputs and derived variables</h2>
 <h3>Where the raw data comes from</h3>
 <ul>
