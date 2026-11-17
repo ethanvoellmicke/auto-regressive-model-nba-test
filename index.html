@@ -22,7 +22,69 @@ details {margin-top:20px} summary {cursor:pointer;font-weight:650}
 <main>
 <h1>Auto-Regressive Model NBA Test</h1>
 <p><a href="https://github.com/ethanvoellmicke/auto-regressive-model-nba-test/blob/main/compare_training.py">View model code on GitHub</a></p>
-<nav class="jump" aria-label="On this page"><a href="#model-stages">Training</a><a href="#transformer">Transformer</a><a href="#variables">Variables</a><a href="#example">Example</a><a href="#results">Season results</a></nav>
+<nav class="jump" aria-label="On this page"><a href="#past-week">Past week</a><a href="#model-stages">Training</a><a href="#transformer">Transformer</a><a href="#variables">Variables</a><a href="#example">Example</a><a href="#results">Season results</a></nav>
+<!-- WEEKLY_SCOREBOARD_START -->
+<section id="past-week">
+<h2>NBA picks from the past week</h2>
+<p><b>39 of 51 correct (76.5%)</b> · November 9–15, 2026</p>
+<p>Retrospective picks from the earlier transformer checkpoint using pregame inputs and recorded starting lineups. Results refresh weekly.</p>
+<details><summary>Show all 51 game picks</summary>
+<table><thead><tr><th>Date</th><th>Matchup</th><th>Pick</th><th>Final (away–home)</th><th>Result</th></tr></thead><tbody>
+<tr><td>11-15</td><th scope="row">OKC at SAC</th><td>OKC · 63.9%</td><td>125–103</td><td>Correct</td></tr>
+<tr><td>11-15</td><th scope="row">ATL at MIL</th><td>ATL · 74.1%</td><td>113–106</td><td>Correct</td></tr>
+<tr><td>11-15</td><th scope="row">HOU at WAS</th><td>HOU · 70.5%</td><td>147–119</td><td>Correct</td></tr>
+<tr><td>11-15</td><th scope="row">NYK at TOR</th><td>NYK · 61.9%</td><td>112–108</td><td>Correct</td></tr>
+<tr><td>11-15</td><th scope="row">DAL at BOS</th><td>BOS · 72.6%</td><td>94–131</td><td>Correct</td></tr>
+<tr><td>11-15</td><th scope="row">SAS at UTA</th><td>SAS · 71.3%</td><td>110–102</td><td>Correct</td></tr>
+<tr><td>11-15</td><th scope="row">CHA at LAC</th><td>LAC · 71.6%</td><td>105–113</td><td>Correct</td></tr>
+<tr><td>11-15</td><th scope="row">LAL at PHX</th><td>LAL · 58.8%</td><td>131–123</td><td>Correct</td></tr>
+<tr><td>11-15</td><th scope="row">IND at PHI</th><td>PHI · 62.3%</td><td>124–131</td><td>Correct</td></tr>
+<tr><td>11-14</td><th scope="row">CHI at MIN</th><td>MIN · 65.5%</td><td>117–106</td><td>Miss</td></tr>
+<tr><td>11-14</td><th scope="row">BKN at MEM</th><td>MEM · 62.4%</td><td>110–129</td><td>Correct</td></tr>
+<tr><td>11-14</td><th scope="row">DET at MIA</th><td>MIA · 61.6%</td><td>117–137</td><td>Correct</td></tr>
+<tr><td>11-14</td><th scope="row">DAL at CLE</th><td>DAL · 67.0%</td><td>117–127</td><td>Miss</td></tr>
+<tr><td>11-14</td><th scope="row">DEN at NOP</th><td>DEN · 73.8%</td><td>116–108</td><td>Correct</td></tr>
+<tr><td>11-13</td><th scope="row">OKC at LAC</th><td>LAC · 50.1%</td><td>112–113</td><td>Correct</td></tr>
+<tr><td>11-13</td><th scope="row">POR at SAC</th><td>POR · 65.9%</td><td>120–107</td><td>Correct</td></tr>
+<tr><td>11-13</td><th scope="row">GSW at SAS</th><td>SAS · 64.1%</td><td>85–123</td><td>Correct</td></tr>
+<tr><td>11-13</td><th scope="row">UTA at HOU</th><td>HOU · 83.1%</td><td>118–125</td><td>Correct</td></tr>
+<tr><td>11-13</td><th scope="row">MEM at NOP</th><td>MEM · 56.2%</td><td>142–111</td><td>Correct</td></tr>
+<tr><td>11-13</td><th scope="row">ATL at CHI</th><td>ATL · 57.6%</td><td>117–125</td><td>Miss</td></tr>
+<tr><td>11-13</td><th scope="row">CLE at MIA</th><td>MIA · 52.4%</td><td>121–133</td><td>Correct</td></tr>
+<tr><td>11-13</td><th scope="row">MIL at ORL</th><td>ORL · 75.3%</td><td>99–107</td><td>Correct</td></tr>
+<tr><td>11-13</td><th scope="row">NYK at IND</th><td>NYK · 63.0%</td><td>104–106</td><td>Miss</td></tr>
+<tr><td>11-12</td><th scope="row">CHA at PHX</th><td>PHX · 65.2%</td><td>96–101</td><td>Correct</td></tr>
+<tr><td>11-12</td><th scope="row">DAL at MIN</th><td>DAL · 51.2%</td><td>94–133</td><td>Miss</td></tr>
+<tr><td>11-12</td><th scope="row">DET at WAS</th><td>DET · 66.0%</td><td>144–140</td><td>Correct</td></tr>
+<tr><td>11-12</td><th scope="row">TOR at PHI</th><td>PHI · 66.1%</td><td>112–123</td><td>Correct</td></tr>
+<tr><td>11-11</td><th scope="row">OKC at POR</th><td>POR · 60.4%</td><td>108–118</td><td>Correct</td></tr>
+<tr><td>11-11</td><th scope="row">GSW at HOU</th><td>HOU · 50.1%</td><td>108–115</td><td>Correct</td></tr>
+<tr><td>11-11</td><th scope="row">ORL at UTA</th><td>ORL · 55.3%</td><td>123–108</td><td>Correct</td></tr>
+<tr><td>11-11</td><th scope="row">BKN at NOP</th><td>NOP · 59.9%</td><td>145–111</td><td>Miss</td></tr>
+<tr><td>11-11</td><th scope="row">LAL at MIL</th><td>LAL · 77.3%</td><td>123–112</td><td>Correct</td></tr>
+<tr><td>11-11</td><th scope="row">DEN at MEM</th><td>DEN · 65.3%</td><td>123–118</td><td>Correct</td></tr>
+<tr><td>11-11</td><th scope="row">SAS at CHI</th><td>SAS · 72.2%</td><td>124–119</td><td>Correct</td></tr>
+<tr><td>11-11</td><th scope="row">BOS at TOR</th><td>BOS · 64.0%</td><td>98–93</td><td>Correct</td></tr>
+<tr><td>11-11</td><th scope="row">CLE at NYK</th><td>NYK · 66.0%</td><td>115–107</td><td>Miss</td></tr>
+<tr><td>11-11</td><th scope="row">WAS at IND</th><td>IND · 70.2%</td><td>101–114</td><td>Correct</td></tr>
+<tr><td>11-10</td><th scope="row">OKC at POR</th><td>OKC · 51.0%</td><td>103–123</td><td>Miss</td></tr>
+<tr><td>11-10</td><th scope="row">ORL at SAC</th><td>ORL · 61.5%</td><td>107–100</td><td>Correct</td></tr>
+<tr><td>11-10</td><th scope="row">MIA at UTA</th><td>MIA · 71.0%</td><td>115–109</td><td>Correct</td></tr>
+<tr><td>11-10</td><th scope="row">LAC at PHX</th><td>LAC · 69.3%</td><td>110–133</td><td>Miss</td></tr>
+<tr><td>11-10</td><th scope="row">BOS at PHI</th><td>BOS · 52.5%</td><td>123–101</td><td>Correct</td></tr>
+<tr><td>11-10</td><th scope="row">MIL at NYK</th><td>NYK · 75.6%</td><td>85–117</td><td>Correct</td></tr>
+<tr><td>11-09</td><th scope="row">NOP at GSW</th><td>GSW · 71.5%</td><td>87–138</td><td>Correct</td></tr>
+<tr><td>11-09</td><th scope="row">SAS at PHX</th><td>SAS · 68.0%</td><td>122–96</td><td>Correct</td></tr>
+<tr><td>11-09</td><th scope="row">DEN at HOU</th><td>HOU · 52.7%</td><td>100–110</td><td>Correct</td></tr>
+<tr><td>11-09</td><th scope="row">IND at DAL</th><td>IND · 55.7%</td><td>122–125</td><td>Miss</td></tr>
+<tr><td>11-09</td><th scope="row">MEM at TOR</th><td>TOR · 51.0%</td><td>118–102</td><td>Miss</td></tr>
+<tr><td>11-09</td><th scope="row">WAS at DET</th><td>DET · 66.1%</td><td>111–122</td><td>Correct</td></tr>
+<tr><td>11-09</td><th scope="row">CLE at CHA</th><td>CLE · 75.2%</td><td>112–124</td><td>Miss</td></tr>
+<tr><td>11-09</td><th scope="row">LAL at ATL</th><td>LAL · 58.3%</td><td>124–114</td><td>Correct</td></tr>
+</tbody></table>
+</details>
+</section>
+<!-- WEEKLY_SCOREBOARD_END -->
 <section id="model-stages" aria-labelledby="model-stages-heading">
 <h2 id="model-stages-heading">Boosted trees: from training to testing</h2>
 <ol>
