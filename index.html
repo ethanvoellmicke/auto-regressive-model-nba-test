@@ -245,9 +245,27 @@ details {margin-top:20px} summary {cursor:pointer;font-weight:650}
 </section>
 <section id="results"><h2>Winner accuracy across four historical tests</h2>
 <p><b>3,537 of 5,269 correct (67.13%)</b> · Each test used its own earlier ten-season training window and one calibration season.</p>
-<div class="grid"><div><small>2022–23</small><strong>63.41%</strong><meter min="0" max="1" value="0.634090909090909">63.41%</meter><small>837 / 1,320 picks</small></div><div><small>2023–24</small><strong>68.59%</strong><meter min="0" max="1" value="0.6858877086494689">68.59%</meter><small>904 / 1,318 picks</small></div><div><small>2024–25</small><strong>67.60%</strong><meter min="0" max="1" value="0.6760456273764258">67.60%</meter><small>889 / 1,315 picks</small></div><div><small>2025–26</small><strong>68.92%</strong><meter min="0" max="1" value="0.689209726443769">68.92%</meter><small>907 / 1,316 picks</small></div></div>
+<div class="grid"><div><small>2022–23</small><strong>63.41%</strong><meter min="0" max="1" value="0.634090909090909">63.41%</meter><small>837 / 1,320 picks</small></div><div><small>2023–24</small><strong>68.59%</strong><meter min="0" max="1" value="0.6858877086494689">68.59%</meter><small>904 / 1,318 picks</small></div><div><small>2024–25</small><strong>67.60%</strong><meter min="0" max="1" value="0.6760456273764258">67.60%</meter><small>889 / 1,315 picks</small></div><div><small>2025–26</small><strong>68.92%</strong><meter min="0" max="1" value="0.689209726443769">68.92%</meter><small>907 / 1,316 picks</small></div>
+<!-- LIVE_SEASON_START -->
+<div><small>2026–27 · Transformer</small><strong>0 graded</strong><small>5 published picks awaiting results</small><p><a href="#season-2026">View season tracker</a></p></div>
+<!-- LIVE_SEASON_END -->
+</div>
 <p>This demo refit reproduced 907 of 1,316
-correct picks (68.92%) on 2025–26.</p></section>
+correct picks (68.92%) on 2025–26.</p>
+<!-- LIVE_SEASON_LOG_START -->
+<h3 id="season-2026">2026–27 season tracker</h3>
+<p>Season accuracy is based on the next-day transformer picks published before tipoff. Results are added once final scores are verified.</p>
+<details><summary>Show season picks</summary>
+<table><thead><tr><th>Date (ET)</th><th>Matchup</th><th>Tip (ET)</th><th>Pick</th><th>Win probability</th><th>Result</th></tr></thead><tbody>
+<tr data-season-game-id="401910002"><td>Nov 17</td><th scope="row">New York Knicks at Toronto Raptors</th><td>7:30 PM</td><td>New York Knicks</td><td>80.0%</td><td>Pending</td></tr>
+<tr data-season-game-id="401910003"><td>Nov 17</td><th scope="row">Portland Trail Blazers at Minnesota Timberwolves</th><td>8:00 PM</td><td>Minnesota Timberwolves</td><td>57.8%</td><td>Pending</td></tr>
+<tr data-season-game-id="401910004"><td>Nov 17</td><th scope="row">Detroit Pistons at San Antonio Spurs</th><td>8:00 PM</td><td>San Antonio Spurs</td><td>78.4%</td><td>Pending</td></tr>
+<tr data-season-game-id="401910006"><td>Nov 17</td><th scope="row">Utah Jazz at LA Clippers</th><td>10:30 PM</td><td>LA Clippers</td><td>87.7%</td><td>Pending</td></tr>
+<tr data-season-game-id="401910005"><td>Nov 17</td><th scope="row">Charlotte Hornets at Los Angeles Lakers</th><td>11:00 PM</td><td>Los Angeles Lakers</td><td>88.3%</td><td>Pending</td></tr>
+</tbody></table>
+</details>
+<!-- LIVE_SEASON_LOG_END -->
+</section>
 <section><h2>Learning as trees are added</h2>
 <p>Average absolute point-margin error on the same 2025–26 games as more trees contribute their corrections. Lower is better.</p>
 <table><thead><tr><th>Trees used</th><th>Error magnitude</th><th>Average error</th></tr></thead><tbody><tr><th scope='row'>1</th><td><meter min='0' max='13.0388' value='13.0388'></meter></td><td>13.04 pts</td></tr><tr><th scope='row'>10</th><td><meter min='0' max='13.0388' value='12.2982'></meter></td><td>12.30 pts</td></tr><tr><th scope='row'>30</th><td><meter min='0' max='13.0388' value='11.5805'></meter></td><td>11.58 pts</td></tr><tr><th scope='row'>60</th><td><meter min='0' max='13.0388' value='11.3169'></meter></td><td>11.32 pts</td></tr><tr><th scope='row'>90</th><td><meter min='0' max='13.0388' value='11.2676'></meter></td><td>11.27 pts</td></tr><tr><th scope='row'>120</th><td><meter min='0' max='13.0388' value='11.2531'></meter></td><td>11.25 pts</td></tr><tr><th scope='row'>150</th><td><meter min='0' max='13.0388' value='11.2515'></meter></td><td>11.25 pts</td></tr><tr><th scope='row'>180</th><td><meter min='0' max='13.0388' value='11.2694'></meter></td><td>11.27 pts</td></tr></tbody></table>
