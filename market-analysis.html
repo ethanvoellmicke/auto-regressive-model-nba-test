@@ -106,7 +106,7 @@ function renderAllocation(){
   for(const value of [s.game.day+" · "+s.game.an+" at "+s.game.hn,s.q.title,money(s.total)])cell(row,value);
   body.append(row);
  }
- status.textContent=result.selected.length?"Suggested total "+money(result.total)+" · Keep "+money(Math.max(0,bankroll-result.total))+" remainder from purchase sizes or availability.":"No eligible selections at the current prices. The amount cannot be allocated using the positive estimated-return rule.";
+ status.textContent=result.selected.length?"Suggested total "+money(result.total)+" · "+money(Math.max(0,bankroll-result.total))+" remainder from purchase sizes or availability.":"No eligible selections at the current prices. The amount cannot be allocated using the positive estimated-return rule.";
 }
 document.getElementById("calculate").addEventListener("click",renderAllocation);
 for(const id of ["bankroll"])document.getElementById(id).addEventListener("input",renderAllocation);
