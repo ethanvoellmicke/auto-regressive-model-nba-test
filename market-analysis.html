@@ -4,17 +4,18 @@
 <main><nav><a href="index.html">NBA predictions</a><a href="market-analysis.html" aria-current="page">Market analysis</a></nav>
 <h1>Model vs. market percentages</h1>
 <p>Basketball forecasts are generated independently. This page compares finished predictions with a separate Kalshi snapshot.</p>
-<section><p id="stamp"></p><p>Lineups are projected. Upcoming predictions and market percentages may change as new information arrives.</p><p id="coverage"></p>
-<div class="scroll"><table><thead><tr><th>Game</th><th>Team</th><th>Model win chance</th><th>Kalshi purchase-price percentage</th><th>Model minus market</th></tr></thead><tbody id="rows"></tbody></table></div></section>
-<section id="allocation"><h2>Budget and game selection</h2>
-<p>Enter a dedicated betting bankroll and the maximum number of games. This produces a cautious scenario using the published model estimates and snapshot prices.</p>
-<p><label>Bankroll $ <input id="bankroll" type="number" min="0" max="1000000" value="100" step="1"></label> <label>Maximum games <input id="max-games" type="number" min="1" max="20" value="3" step="1"></label></p>
-<p><label>Probability uncertainty deduction (percentage points) <input id="haircut" type="number" min="0" max="50" value="5" step="0.5"></label> <button id="calculate" type="button">Calculate scenario</button></p>
-<p>Default sizing uses one-quarter Kelly, capped at 1% of bankroll per game and 5% across all selected games. Each candidate’s model probability is reduced by 5 percentage points by default. These are chosen caution settings, not a measured error bound. The model’s calibration remains unverified.</p>
-<p id="allocation-status" role="status"></p><div class="scroll"><table><thead><tr><th>Game</th><th>Selection</th><th>Adjusted chance</th><th>Market %</th><th>Amount including fees</th><th>Estimated net</th><th>Potential win net</th><th>Maximum loss</th></tr></thead><tbody id="allocation-rows"></tbody></table></div>
-<p>Selection ranks estimated return per dollar after a conservative fee estimate. It selects at most one team per game and may leave money unused or select fewer games. Stakes are capped to quoted availability. Team and schedule correlations are not estimated. Verify prices and lineups before acting.</p>
-<p>Fee estimate uses 0.07 × quantity × price × (1 − price), rounded upward to a whole cent. Actual fees may differ. Quotes older than 24 hours disable selection until the nightly refresh updates them. <a href="https://kalshi.com/docs/kalshi-fee-schedule.pdf">Kalshi fee schedule</a></p>
-</section>
+<section id="allocation"><h2>Suggested games and amounts</h2>
+<p><label>Your betting bankroll $ <input id="bankroll" type="number" min="0" max="1000000" value="100" step="1"></label> <button id="calculate" type="button">Show suggestions</button></p>
+<p id="allocation-status" role="status"></p>
+<div class="scroll"><table><thead><tr><th>Game</th><th>Team to back</th><th>Suggested amount</th></tr></thead><tbody id="allocation-rows"></tbody></table></div>
+<p><small>Model-based suggestions using snapshot prices. Check the current price before placing a bet. Model probabilities remain unverified.</small></p>
+<details><summary>How amounts are chosen</summary>
+<p>Up to three games, with one team per game. Uses one-quarter Kelly, at most 1% of your bankroll per game and 5% in total, after deducting five percentage points from the model probability. These are chosen caution settings. Money may remain unused.</p>
+<p>Amounts include estimated taker fees, rounded up to a cent, and are capped to available quantity. Quotes older than 24 hours disable suggestions. Correlations between games are not modeled. <a href="https://kalshi.com/docs/kalshi-fee-schedule.pdf">Fee schedule</a></p>
+</details></section>
+<section><details><summary>Compare model and market percentages</summary><p id="stamp"></p><p>Lineups are projected. Upcoming predictions and market percentages may change as new information arrives.</p><p id="coverage"></p>
+<div class="scroll"><table><thead><tr><th>Game</th><th>Team</th><th>Model win chance</th><th>Kalshi purchase-price percentage</th><th>Model minus market</th></tr></thead><tbody id="rows"></tbody></table></div></details></section>
+
 <section><h2>Reading the comparison</h2>
 <p>The market percentage comes from the price available to buy that team’s win outcome. A price of 60¢ appears as 60%. The difference is measured in percentage points. A model estimate of 70% against a 60% purchase-price percentage gives +10 percentage points.</p>
 <p>These comparisons exclude fees. Purchase-price percentages for both teams can total more than 100% because of the bid–ask spread. The model’s probability calibration remains unverified, so a positive difference is an estimated disagreement with the market.</p>
@@ -91,19 +92,19 @@ function allocate(bankroll,limit,haircut,now){
 }
 function renderAllocation(){
  const bankroll=Number(document.getElementById("bankroll").value);
- const result=allocate(bankroll,Number(document.getElementById("max-games").value),Number(document.getElementById("haircut").value),Date.now());
+ const result=allocate(bankroll,3,5,Date.now());
  const body=document.getElementById("allocation-rows");body.replaceChildren();
  const status=document.getElementById("allocation-status");
  if(result.error){status.textContent=result.error;return;}
  for(const s of result.selected){
   const row=document.createElement("tr");
-  for(const value of [s.game.day+" · "+s.game.an+" at "+s.game.hn,s.q.title,pct(s.probability),pct(s.q.ask),money(s.total),money(s.expected),money(s.win),money(s.total)])cell(row,value);
+  for(const value of [s.game.day+" · "+s.game.an+" at "+s.game.hn,s.q.title,money(s.total)])cell(row,value);
   body.append(row);
  }
- status.textContent=result.selected.length?result.selected.length+" games · "+money(result.total)+" total at risk · "+money(bankroll-result.total)+" left unallocated. Amounts are independent positions held through the game result.":"No positions fit the adjusted probabilities, fees, quote availability, and stake limits.";
+ status.textContent=result.selected.length?"Suggested total "+money(result.total)+" · Keep "+money(bankroll-result.total)+" unallocated.":"No suggested bets at these prices and stake limits.";
 }
 document.getElementById("calculate").addEventListener("click",renderAllocation);
-for(const id of ["bankroll","max-games","haircut"])document.getElementById(id).addEventListener("input",renderAllocation);
+for(const id of ["bankroll"])document.getElementById(id).addEventListener("input",renderAllocation);
 renderAllocation();
 
 </script></html>
