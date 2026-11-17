@@ -5,12 +5,12 @@
 <h1>Model vs. market percentages</h1>
 <p>Basketball forecasts are generated independently. This page compares finished predictions with a separate Kalshi snapshot.</p>
 <section id="allocation"><h2>Suggested games and amounts</h2>
-<p><label>Your betting bankroll $ <input id="bankroll" type="number" min="0" max="1000000" value="100" step="1"></label> <button id="calculate" type="button">Show suggestions</button></p>
+<p><label>Amount to divide $ <input id="bankroll" type="number" min="0" max="1000000" value="100" step="1"></label> <button id="calculate" type="button">Show suggestions</button></p>
 <p id="allocation-status" role="status"></p>
 <div class="scroll"><table><thead><tr><th>Game</th><th>Team to back</th><th>Suggested amount</th></tr></thead><tbody id="allocation-rows"></tbody></table></div>
 <p><small>Model-based suggestions using snapshot prices. Check the current price before placing a bet. Model probabilities remain unverified.</small></p>
 <details><summary>How amounts are chosen</summary>
-<p>Up to three games, with one team per game. Uses one-quarter Kelly, at most 1% of your bankroll per game and 5% in total, after deducting five percentage points from the model probability. These are chosen caution settings. Money may remain unused.</p>
+<p>Divides the entered amount across up to three games, weighting each selected game by its estimated return per dollar after fees and a five-percentage-point probability deduction. The full amount is targeted. Any remainder comes from fees, whole-unit purchase sizes, or limited quoted availability. This allocation rule is a heuristic.</p>
 <p>Amounts include estimated taker fees, rounded up to a cent, and are capped to available quantity. Quotes older than 24 hours disable suggestions. Correlations between games are not modeled. <a href="https://kalshi.com/docs/kalshi-fee-schedule.pdf">Fee schedule</a></p>
 </details></section>
 <section><details><summary>Compare model and market percentages</summary><p id="stamp"></p><p>Lineups are projected. Upcoming predictions and market percentages may change as new information arrives.</p><p id="coverage"></p>
@@ -51,8 +51,17 @@ const money=x=>new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).
 const fee=(n,price)=>Math.ceil((0.07*n*price*(1-price)-1e-10)*100)/100;
 const cost=(n,price)=>n*price+fee(n,price);
 function validQuote(q){return q.status==="active"&&q.payout===1&&q.ask>0&&q.ask<1&&q.size>=1&&Number.isFinite(q.p)&&q.p>=0&&q.p<=1;}
+function affordableQuantity(amount,price,maximum){
+ let low=0,high=Math.min(Math.floor(amount/price),maximum);
+ while(low<high){
+  const middle=Math.ceil((low+high)/2);
+  if(cost(middle,price)<=amount+1e-9)low=middle;
+  else high=middle-1;
+ }
+ return low;
+}
 function allocate(bankroll,limit,haircut,now){
- if(!Number.isFinite(bankroll)||bankroll<=0||bankroll>1000000||!Number.isInteger(limit)||limit<1||limit>20||!Number.isFinite(haircut)||haircut<0||haircut>50)return {error:"Enter a positive bankroll up to $1,000,000, 1–20 games, and an uncertainty deduction from 0 to 50."};
+ if(!Number.isFinite(bankroll)||bankroll<=0||bankroll>1000000||!Number.isInteger(limit)||limit<1||limit>20||!Number.isFinite(haircut)||haircut<0||haircut>50)return {error:"Enter an amount above zero and up to $1,000,000."};
  const age=now-Date.parse(snapshot.at);
  if(!Number.isFinite(age)||age<0||age>86400000)return {error:"Quote snapshot is stale. Wait for a verified market refresh before selecting stakes."};
  const candidates=[];
@@ -62,33 +71,29 @@ function allocate(bankroll,limit,haircut,now){
   for(const q of game.quotes.filter(validQuote)){
    const probability=Math.max(0,q.p-haircut/100);
    const unitCost=cost(1,q.ask);
-   if(unitCost>=1||probability<=unitCost)continue;
-   const fraction=0.25*(probability-unitCost)/(1-unitCost);
-   const cap=Math.min(bankroll*0.01,bankroll*fraction);
-   let n=Math.min(Math.floor(cap/q.ask),q.size);
-   while(n>0&&cost(n,q.ask)>cap)n--;
-   if(n<1)continue;
-   const total=cost(n,q.ask);
-   const roi=(n*probability-total)/total;
-   const candidate={game,q,probability,n,total,roi,cap};
+   if(unitCost>=1||probability<=unitCost||unitCost>bankroll)continue;
+   const roi=(probability-unitCost)/unitCost;
+   const candidate={game,q,probability,roi,n:0,total:0};
    if(!best||roi>best.roi)best=candidate;
   }
   if(best)candidates.push(best);
  }
  candidates.sort((a,b)=>b.roi-a.roi||a.game.date.localeCompare(b.game.date)||a.q.ticker.localeCompare(b.q.ticker));
- let remaining=bankroll*0.05;
- const selected=[];
- for(const item of candidates){
-  if(selected.length>=limit)break;
-  let n=Math.min(item.n,Math.floor(remaining/item.q.ask));
-  while(n>0&&cost(n,item.q.ask)>remaining)n--;
-  if(n<1)continue;
-  const total=cost(n,item.q.ask);
-  if(n*item.probability<=total)continue;
-  selected.push({...item,n,total,expected:n*item.probability-total,win:n-total});
-  remaining-=total;
+ const selected=candidates.slice(0,limit);
+ const weight=selected.reduce((sum,s)=>sum+s.roi,0);
+ for(const s of selected){
+  s.n=affordableQuantity(bankroll*s.roi/weight,s.q.ask,s.q.size);
+  s.total=cost(s.n,s.q.ask);
  }
- return {selected,total:selected.reduce((sum,s)=>sum+s.total,0)};
+ let remaining=bankroll-selected.reduce((sum,s)=>sum+s.total,0);
+ for(const s of selected){
+  const n=affordableQuantity(s.total+remaining,s.q.ask,s.q.size);
+  const total=cost(n,s.q.ask);
+  remaining-=total-s.total;
+  s.n=n;s.total=total;
+ }
+ const positions=selected.filter(s=>s.n>0).map(s=>({...s,expected:s.n*s.probability-s.total,win:s.n-s.total}));
+ return {selected:positions,total:positions.reduce((sum,s)=>sum+s.total,0)};
 }
 function renderAllocation(){
  const bankroll=Number(document.getElementById("bankroll").value);
@@ -101,7 +106,7 @@ function renderAllocation(){
   for(const value of [s.game.day+" · "+s.game.an+" at "+s.game.hn,s.q.title,money(s.total)])cell(row,value);
   body.append(row);
  }
- status.textContent=result.selected.length?"Suggested total "+money(result.total)+" · Keep "+money(bankroll-result.total)+" unallocated.":"No suggested bets at these prices and stake limits.";
+ status.textContent=result.selected.length?"Suggested total "+money(result.total)+" · Keep "+money(Math.max(0,bankroll-result.total))+" remainder from purchase sizes or availability.":"No eligible selections at the current prices. The amount cannot be allocated using the positive estimated-return rule.";
 }
 document.getElementById("calculate").addEventListener("click",renderAllocation);
 for(const id of ["bankroll"])document.getElementById(id).addEventListener("input",renderAllocation);
