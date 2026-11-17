@@ -4,7 +4,8 @@
 <main><nav><a href="index.html">NBA predictions</a><a href="market-analysis.html" aria-current="page">Market analysis</a></nav>
 <h1>Model vs. market percentages</h1>
 <p>Basketball forecasts are generated independently. This page compares finished predictions with a separate Kalshi snapshot.</p>
-<section id="allocation"><h2>Suggested games and amounts</h2>
+<section id="allocation"><h2>Tonight’s suggested games and amounts</h2>
+<p id="tonight-date"></p>
 <p><label>Amount to divide $ <input id="bankroll" type="number" min="0" max="1000000" value="100" step="1"></label> <button id="calculate" type="button">Show suggestions</button></p>
 <p id="allocation-status" role="status"></p>
 <div class="scroll"><table><thead><tr><th>Game</th><th>Team to back</th><th>Suggested amount</th></tr></thead><tbody id="allocation-rows"></tbody></table></div>
@@ -60,13 +61,16 @@ function affordableQuantity(amount,price,maximum){
  }
  return low;
 }
+function easternDay(now){
+ return new Intl.DateTimeFormat("en-CA",{timeZone:"America/New_York",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date(now));
+}
 function allocate(bankroll,limit,haircut,now){
  if(!Number.isFinite(bankroll)||bankroll<=0||bankroll>1000000||!Number.isInteger(limit)||limit<1||limit>20||!Number.isFinite(haircut)||haircut<0||haircut>50)return {error:"Enter an amount above zero and up to $1,000,000."};
  const age=now-Date.parse(snapshot.at);
  if(!Number.isFinite(age)||age<0||age>86400000)return {error:"Quote snapshot is stale. Wait for a verified market refresh before selecting stakes."};
  const candidates=[];
  for(const game of snapshot.games){
-  if(Date.parse(game.date)<=now)continue;
+  if(game.day!==easternDay(now)||Date.parse(game.date)<=now)continue;
   let best=null;
   for(const q of game.quotes.filter(validQuote)){
    const probability=Math.max(0,q.p-haircut/100);
@@ -96,6 +100,7 @@ function allocate(bankroll,limit,haircut,now){
  return {selected:positions,total:positions.reduce((sum,s)=>sum+s.total,0)};
 }
 function renderAllocation(){
+ document.getElementById("tonight-date").textContent=new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",weekday:"long",month:"long",day:"numeric"}).format(new Date())+" · Games yet to tip off";
  const bankroll=Number(document.getElementById("bankroll").value);
  const result=allocate(bankroll,3,5,Date.now());
  const body=document.getElementById("allocation-rows");body.replaceChildren();
@@ -106,7 +111,7 @@ function renderAllocation(){
   for(const value of [s.game.day+" · "+s.game.an+" at "+s.game.hn,s.q.title,money(s.total)])cell(row,value);
   body.append(row);
  }
- status.textContent=result.selected.length?"Suggested total "+money(result.total)+" · "+money(Math.max(0,bankroll-result.total))+" remainder from purchase sizes or availability.":"No eligible selections at the current prices. The amount cannot be allocated using the positive estimated-return rule.";
+ status.textContent=result.selected.length?"Suggested total "+money(result.total)+" · "+money(Math.max(0,bankroll-result.total))+" remainder from purchase sizes or availability.":"No eligible selections for tonight’s remaining games at the current prices.";
 }
 document.getElementById("calculate").addEventListener("click",renderAllocation);
 for(const id of ["bankroll"])document.getElementById(id).addEventListener("input",renderAllocation);
