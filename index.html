@@ -24,89 +24,57 @@ details {margin-top:20px} summary {cursor:pointer;font-weight:650}
 <p><a href="https://github.com/ethanvoellmicke/auto-regressive-model-nba-test/blob/main/compare_training.py">View model code on GitHub</a></p>
 <nav class="jump" aria-label="On this page"><a href="market-analysis.html">Market analysis</a><a href="#next-day">Next-day picks</a><a href="#current-week">This week</a><a href="#past-week">Past week</a><a href="#model-stages">Training</a><a href="#transformer">Transformer</a><a href="#variables">Variables</a><a href="#example">Example</a><a href="#results">Season results</a></nav>
 <!-- NIGHTLY_FORECAST_START -->
-<section id="next-day">
-<h2>Next-day NBA picks</h2>
-<p><b>Tuesday, November 17, 2026</b> · 5 scheduled games</p>
-<p>Starting lineups are projected from each team’s most recent verified starting five. The model and game history include results through November 15.</p>
-<table><thead><tr><th>Matchup</th><th>Tip (ET)</th><th>Model pick</th><th>Win probability</th></tr></thead><tbody>
-<tr><th scope="row">New York Knicks at Toronto Raptors</th><td>7:30 PM</td><td>New York Knicks</td><td>80.0%</td></tr>
-<tr><th scope="row">Portland Trail Blazers at Minnesota Timberwolves</th><td>8:00 PM</td><td>Minnesota Timberwolves</td><td>57.8%</td></tr>
-<tr><th scope="row">Detroit Pistons at San Antonio Spurs</th><td>8:00 PM</td><td>San Antonio Spurs</td><td>78.4%</td></tr>
-<tr><th scope="row">Utah Jazz at LA Clippers</th><td>10:30 PM</td><td>LA Clippers</td><td>87.7%</td></tr>
-<tr><th scope="row">Charlotte Hornets at Los Angeles Lakers</th><td>11:00 PM</td><td>Los Angeles Lakers</td><td>88.3%</td></tr>
-</tbody></table>
-<p><small>Schedule from <a href="https://www.espn.com/nba/scoreboard/_/date/20261117">ESPN</a>.</small></p>
-</section>
+<section id="next-day"><h2>Next-day NBA picks</h2><p><b>Thursday, November 19, 2026</b> · 4 scheduled games</p><p>Projected starters use each team's latest verified starting five. Basketball history through 2026-11-17; checkpoint through 2026-11-15.</p><table><thead><tr><th>Matchup</th><th>Tip (ET)</th><th>Model pick</th><th>Win probability</th></tr></thead><tbody><tr data-game-id="401910019"><th scope="row">Golden State Warriors at Memphis Grizzlies</th><td>8:00 PM</td><td>Memphis Grizzlies</td><td>68.7%</td></tr>
+<tr data-game-id="401910020"><th scope="row">Portland Trail Blazers at Milwaukee Bucks</th><td>8:00 PM</td><td>Portland Trail Blazers</td><td>77.5%</td></tr>
+<tr data-game-id="401910021"><th scope="row">New York Knicks at Minnesota Timberwolves</th><td>8:00 PM</td><td>New York Knicks</td><td>67.8%</td></tr>
+<tr data-game-id="401910022"><th scope="row">LA Clippers at San Antonio Spurs</th><td>8:00 PM</td><td>San Antonio Spurs</td><td>80.5%</td></tr></tbody></table></section>
 <!-- NIGHTLY_FORECAST_END -->
 <!-- CURRENT_WEEK_START -->
-<section id="current-week" data-week-start="2026-11-16">
-<h2>This week’s predictions</h2>
-<p><b>November 16–22, 2026</b> · 43 upcoming games from November 17 onward</p>
-<p><b>Upcoming picks are subject to change</b> as new game results and lineup information come in. The initial forecasts use projected starting fives and game history through November 15.</p>
-<details><summary>Show this week’s picks</summary>
-<h3>Tuesday, Nov 17</h3>
+<section id="current-week" data-week-start="2026-11-16"><h2>This week’s predictions</h2><p><b>November 16–22, 2026</b></p><p><b>Upcoming picks are subject to change</b> as game results and lineup information arrive. History through November 17; checkpoint through November 15. Lineups are projected.</p><details><summary>Show this week’s picks</summary><h3>Tuesday, Nov 17</h3>
 <table><thead><tr><th>Matchup</th><th>Tip (ET)</th><th>Pick</th><th>Win probability</th></tr></thead><tbody>
 <tr data-game-id="401910002"><th scope="row">NY at TOR</th><td>7:30 PM</td><td>NY</td><td>80.0%</td></tr>
 <tr data-game-id="401910003"><th scope="row">POR at MIN</th><td>8:00 PM</td><td>MIN</td><td>57.8%</td></tr>
 <tr data-game-id="401910004"><th scope="row">DET at SA</th><td>8:00 PM</td><td>SA</td><td>78.4%</td></tr>
 <tr data-game-id="401910006"><th scope="row">UTAH at LAC</th><td>10:30 PM</td><td>LAC</td><td>87.7%</td></tr>
 <tr data-game-id="401910005"><th scope="row">CHA at LAL</th><td>11:00 PM</td><td>LAL</td><td>88.3%</td></tr>
-</tbody></table>
-<h3>Wednesday, Nov 18</h3>
-<table><thead><tr><th>Matchup</th><th>Tip (ET)</th><th>Pick</th><th>Win probability</th></tr></thead><tbody>
-<tr data-game-id="401910007"><th scope="row">MEM at CLE</th><td>7:00 PM</td><td>MEM</td><td>55.1%</td></tr>
-<tr data-game-id="401910008"><th scope="row">HOU at IND</th><td>7:00 PM</td><td>HOU</td><td>78.0%</td></tr>
-<tr data-game-id="401910009"><th scope="row">MIL at MIA</th><td>7:00 PM</td><td>MIA</td><td>90.8%</td></tr>
-<tr data-game-id="401910010"><th scope="row">PHI at ORL</th><td>7:00 PM</td><td>PHI</td><td>65.3%</td></tr>
-<tr data-game-id="401910011"><th scope="row">CHI at BKN</th><td>7:30 PM</td><td>BKN</td><td>50.5%</td></tr>
-<tr data-game-id="401910012"><th scope="row">WSH at TOR</th><td>7:30 PM</td><td>TOR</td><td>74.7%</td></tr>
-<tr data-game-id="401910013"><th scope="row">DET at NO</th><td>8:00 PM</td><td>DET</td><td>74.1%</td></tr>
-<tr data-game-id="401910014"><th scope="row">ATL at OKC</th><td>8:00 PM</td><td>OKC</td><td>81.2%</td></tr>
-<tr data-game-id="401910016"><th scope="row">GS at DAL</th><td>8:00 PM</td><td>GS</td><td>59.1%</td></tr>
-<tr data-game-id="401910015"><th scope="row">BOS at DEN</th><td>9:30 PM</td><td>DEN</td><td>58.5%</td></tr>
-<tr data-game-id="401910017"><th scope="row">UTAH at LAL</th><td>10:00 PM</td><td>LAL</td><td>89.2%</td></tr>
-<tr data-game-id="401910018"><th scope="row">PHX at SAC</th><td>10:00 PM</td><td>PHX</td><td>67.8%</td></tr>
-</tbody></table>
-<h3>Thursday, Nov 19</h3>
-<table><thead><tr><th>Matchup</th><th>Tip (ET)</th><th>Pick</th><th>Win probability</th></tr></thead><tbody>
-<tr data-game-id="401910019"><th scope="row">GS at MEM</th><td>8:00 PM</td><td>MEM</td><td>56.2%</td></tr>
-<tr data-game-id="401910020"><th scope="row">POR at MIL</th><td>8:00 PM</td><td>POR</td><td>82.2%</td></tr>
-<tr data-game-id="401910021"><th scope="row">NY at MIN</th><td>8:00 PM</td><td>NY</td><td>63.7%</td></tr>
-<tr data-game-id="401910022"><th scope="row">LAC at SA</th><td>8:00 PM</td><td>SA</td><td>79.7%</td></tr>
-</tbody></table>
-<h3>Friday, Nov 20</h3>
-<table><thead><tr><th>Matchup</th><th>Tip (ET)</th><th>Pick</th><th>Win probability</th></tr></thead><tbody>
-<tr data-game-id="401909305"><th scope="row">CHA at ATL</th><td>7:00 PM</td><td>ATL</td><td>86.9%</td></tr>
-<tr data-game-id="401909306"><th scope="row">ORL at BKN</th><td>7:30 PM</td><td>ORL</td><td>70.6%</td></tr>
-<tr data-game-id="401909307"><th scope="row">IND at CLE</th><td>7:30 PM</td><td>CLE</td><td>55.4%</td></tr>
-<tr data-game-id="401909308"><th scope="row">TOR at DET</th><td>7:30 PM</td><td>DET</td><td>73.6%</td></tr>
-<tr data-game-id="401909309"><th scope="row">WSH at CHI</th><td>8:00 PM</td><td>CHI</td><td>51.4%</td></tr>
-<tr data-game-id="401909310"><th scope="row">NO at OKC</th><td>8:00 PM</td><td>OKC</td><td>92.7%</td></tr>
-<tr data-game-id="401909311"><th scope="row">PHX at UTAH</th><td>9:30 PM</td><td>PHX</td><td>68.4%</td></tr>
-<tr data-game-id="401909312"><th scope="row">HOU at DEN</th><td>10:00 PM</td><td>DEN</td><td>69.0%</td></tr>
-<tr data-game-id="401909313"><th scope="row">SAC at LAL</th><td>10:00 PM</td><td>LAL</td><td>88.9%</td></tr>
-</tbody></table>
-<h3>Saturday, Nov 21</h3>
-<table><thead><tr><th>Matchup</th><th>Tip (ET)</th><th>Pick</th><th>Win probability</th></tr></thead><tbody>
-<tr data-game-id="401910023"><th scope="row">MIL at PHI</th><td>1:00 PM</td><td>PHI</td><td>90.8%</td></tr>
-<tr data-game-id="401910024"><th scope="row">POR at NY</th><td>7:30 PM</td><td>NY</td><td>78.2%</td></tr>
-<tr data-game-id="401910025"><th scope="row">LAC at DAL</th><td>8:00 PM</td><td>LAC</td><td>63.0%</td></tr>
-<tr data-game-id="401910026"><th scope="row">MEM at MIN</th><td>8:00 PM</td><td>MIN</td><td>67.9%</td></tr>
-<tr data-game-id="401910027"><th scope="row">NO at SA</th><td>8:00 PM</td><td>SA</td><td>91.1%</td></tr>
-<tr data-game-id="401910028"><th scope="row">BOS at SAC</th><td>10:00 PM</td><td>BOS</td><td>83.5%</td></tr>
-</tbody></table>
-<h3>Sunday, Nov 22</h3>
-<table><thead><tr><th>Matchup</th><th>Tip (ET)</th><th>Pick</th><th>Win probability</th></tr></thead><tbody>
-<tr data-game-id="401910029"><th scope="row">DET at ATL</th><td>3:30 PM</td><td>ATL</td><td>59.5%</td></tr>
-<tr data-game-id="401910030"><th scope="row">OKC at MIA</th><td>6:00 PM</td><td>OKC</td><td>51.2%</td></tr>
-<tr data-game-id="401910031"><th scope="row">ORL at WSH</th><td>7:00 PM</td><td>ORL</td><td>58.6%</td></tr>
-<tr data-game-id="401910032"><th scope="row">DEN at CHI</th><td>7:00 PM</td><td>DEN</td><td>78.5%</td></tr>
-<tr data-game-id="401910033"><th scope="row">DAL at UTAH</th><td>7:00 PM</td><td>DAL</td><td>63.1%</td></tr>
-<tr data-game-id="401910034"><th scope="row">IND at NY</th><td>8:00 PM</td><td>NY</td><td>86.5%</td></tr>
-<tr data-game-id="401910035"><th scope="row">BOS at GS</th><td>8:30 PM</td><td>BOS</td><td>72.2%</td></tr>
-</tbody></table>
-</details>
-</section>
+</tbody></table><h3>2026-11-18</h3><table><thead><tr><th>Matchup</th><th>Tip (ET)</th><th>Model pick</th><th>Win probability</th></tr></thead><tbody><tr data-game-id="401910007"><th scope="row">Memphis Grizzlies at Cleveland Cavaliers</th><td>7:00 PM</td><td>Cleveland Cavaliers</td><td>79.8%</td></tr>
+<tr data-game-id="401910008"><th scope="row">Houston Rockets at Indiana Pacers</th><td>7:00 PM</td><td>Houston Rockets</td><td>75.2%</td></tr>
+<tr data-game-id="401910009"><th scope="row">Milwaukee Bucks at Miami Heat</th><td>7:00 PM</td><td>Miami Heat</td><td>91.1%</td></tr>
+<tr data-game-id="401910010"><th scope="row">Philadelphia 76ers at Orlando Magic</th><td>7:00 PM</td><td>Philadelphia 76ers</td><td>52.5%</td></tr>
+<tr data-game-id="401910011"><th scope="row">Chicago Bulls at Brooklyn Nets</th><td>7:30 PM</td><td>Brooklyn Nets</td><td>62.9%</td></tr>
+<tr data-game-id="401910012"><th scope="row">Washington Wizards at Toronto Raptors</th><td>7:30 PM</td><td>Toronto Raptors</td><td>72.2%</td></tr>
+<tr data-game-id="401910013"><th scope="row">Detroit Pistons at New Orleans Pelicans</th><td>8:00 PM</td><td>Detroit Pistons</td><td>64.2%</td></tr>
+<tr data-game-id="401910014"><th scope="row">Atlanta Hawks at Oklahoma City Thunder</th><td>8:00 PM</td><td>Oklahoma City Thunder</td><td>81.2%</td></tr>
+<tr data-game-id="401910016"><th scope="row">Golden State Warriors at Dallas Mavericks</th><td>8:00 PM</td><td>Golden State Warriors</td><td>50.6%</td></tr>
+<tr data-game-id="401910015"><th scope="row">Boston Celtics at Denver Nuggets</th><td>9:30 PM</td><td>Denver Nuggets</td><td>67.8%</td></tr>
+<tr data-game-id="401910017"><th scope="row">Utah Jazz at Los Angeles Lakers</th><td>10:00 PM</td><td>Los Angeles Lakers</td><td>87.3%</td></tr>
+<tr data-game-id="401910018"><th scope="row">Phoenix Suns at Sacramento Kings</th><td>10:00 PM</td><td>Phoenix Suns</td><td>69.9%</td></tr></tbody></table>
+<h3>2026-11-19</h3><table><thead><tr><th>Matchup</th><th>Tip (ET)</th><th>Model pick</th><th>Win probability</th></tr></thead><tbody><tr data-game-id="401910019"><th scope="row">Golden State Warriors at Memphis Grizzlies</th><td>8:00 PM</td><td>Memphis Grizzlies</td><td>68.7%</td></tr>
+<tr data-game-id="401910020"><th scope="row">Portland Trail Blazers at Milwaukee Bucks</th><td>8:00 PM</td><td>Portland Trail Blazers</td><td>77.5%</td></tr>
+<tr data-game-id="401910021"><th scope="row">New York Knicks at Minnesota Timberwolves</th><td>8:00 PM</td><td>New York Knicks</td><td>67.8%</td></tr>
+<tr data-game-id="401910022"><th scope="row">LA Clippers at San Antonio Spurs</th><td>8:00 PM</td><td>San Antonio Spurs</td><td>80.5%</td></tr></tbody></table>
+<h3>2026-11-20</h3><table><thead><tr><th>Matchup</th><th>Tip (ET)</th><th>Model pick</th><th>Win probability</th></tr></thead><tbody><tr data-game-id="401909305"><th scope="row">Charlotte Hornets at Atlanta Hawks</th><td>7:00 PM</td><td>Atlanta Hawks</td><td>87.0%</td></tr>
+<tr data-game-id="401909306"><th scope="row">Orlando Magic at Brooklyn Nets</th><td>7:30 PM</td><td>Orlando Magic</td><td>62.7%</td></tr>
+<tr data-game-id="401909307"><th scope="row">Indiana Pacers at Cleveland Cavaliers</th><td>7:30 PM</td><td>Cleveland Cavaliers</td><td>86.3%</td></tr>
+<tr data-game-id="401909308"><th scope="row">Toronto Raptors at Detroit Pistons</th><td>7:30 PM</td><td>Detroit Pistons</td><td>65.6%</td></tr>
+<tr data-game-id="401909309"><th scope="row">Washington Wizards at Chicago Bulls</th><td>8:00 PM</td><td>Chicago Bulls</td><td>52.6%</td></tr>
+<tr data-game-id="401909310"><th scope="row">New Orleans Pelicans at Oklahoma City Thunder</th><td>8:00 PM</td><td>Oklahoma City Thunder</td><td>92.5%</td></tr>
+<tr data-game-id="401909311"><th scope="row">Phoenix Suns at Utah Jazz</th><td>9:30 PM</td><td>Phoenix Suns</td><td>66.4%</td></tr>
+<tr data-game-id="401909312"><th scope="row">Houston Rockets at Denver Nuggets</th><td>10:00 PM</td><td>Denver Nuggets</td><td>71.5%</td></tr>
+<tr data-game-id="401909313"><th scope="row">Sacramento Kings at Los Angeles Lakers</th><td>10:00 PM</td><td>Los Angeles Lakers</td><td>87.5%</td></tr></tbody></table>
+<h3>2026-11-21</h3><table><thead><tr><th>Matchup</th><th>Tip (ET)</th><th>Model pick</th><th>Win probability</th></tr></thead><tbody><tr data-game-id="401910023"><th scope="row">Milwaukee Bucks at Philadelphia 76ers</th><td>1:00 PM</td><td>Philadelphia 76ers</td><td>90.7%</td></tr>
+<tr data-game-id="401910024"><th scope="row">Portland Trail Blazers at New York Knicks</th><td>7:30 PM</td><td>New York Knicks</td><td>85.3%</td></tr>
+<tr data-game-id="401910025"><th scope="row">LA Clippers at Dallas Mavericks</th><td>8:00 PM</td><td>LA Clippers</td><td>61.1%</td></tr>
+<tr data-game-id="401910026"><th scope="row">Memphis Grizzlies at Minnesota Timberwolves</th><td>8:00 PM</td><td>Minnesota Timberwolves</td><td>58.0%</td></tr>
+<tr data-game-id="401910027"><th scope="row">New Orleans Pelicans at San Antonio Spurs</th><td>8:00 PM</td><td>San Antonio Spurs</td><td>91.0%</td></tr>
+<tr data-game-id="401910028"><th scope="row">Boston Celtics at Sacramento Kings</th><td>10:00 PM</td><td>Boston Celtics</td><td>81.8%</td></tr></tbody></table>
+<h3>2026-11-22</h3><table><thead><tr><th>Matchup</th><th>Tip (ET)</th><th>Model pick</th><th>Win probability</th></tr></thead><tbody><tr data-game-id="401910029"><th scope="row">Detroit Pistons at Atlanta Hawks</th><td>3:30 PM</td><td>Atlanta Hawks</td><td>70.9%</td></tr>
+<tr data-game-id="401910030"><th scope="row">Oklahoma City Thunder at Miami Heat</th><td>6:00 PM</td><td>Miami Heat</td><td>51.5%</td></tr>
+<tr data-game-id="401910031"><th scope="row">Orlando Magic at Washington Wizards</th><td>7:00 PM</td><td>Orlando Magic</td><td>60.6%</td></tr>
+<tr data-game-id="401910032"><th scope="row">Denver Nuggets at Chicago Bulls</th><td>7:00 PM</td><td>Denver Nuggets</td><td>78.5%</td></tr>
+<tr data-game-id="401910033"><th scope="row">Dallas Mavericks at Utah Jazz</th><td>7:00 PM</td><td>Dallas Mavericks</td><td>56.4%</td></tr>
+<tr data-game-id="401910034"><th scope="row">Indiana Pacers at New York Knicks</th><td>8:00 PM</td><td>New York Knicks</td><td>86.3%</td></tr>
+<tr data-game-id="401910035"><th scope="row">Boston Celtics at Golden State Warriors</th><td>8:30 PM</td><td>Boston Celtics</td><td>71.0%</td></tr></tbody></table></details></section>
 <!-- CURRENT_WEEK_END -->
 <!-- WEEKLY_SCOREBOARD_START -->
 <section id="past-week">
@@ -247,7 +215,7 @@ details {margin-top:20px} summary {cursor:pointer;font-weight:650}
 <p><b>3,537 of 5,269 correct (67.13%)</b> · Each test used its own earlier ten-season training window and one calibration season.</p>
 <div class="grid"><div><small>2022–23</small><strong>63.41%</strong><meter min="0" max="1" value="0.634090909090909">63.41%</meter><small>837 / 1,320 picks</small></div><div><small>2023–24</small><strong>68.59%</strong><meter min="0" max="1" value="0.6858877086494689">68.59%</meter><small>904 / 1,318 picks</small></div><div><small>2024–25</small><strong>67.60%</strong><meter min="0" max="1" value="0.6760456273764258">67.60%</meter><small>889 / 1,315 picks</small></div><div><small>2025–26</small><strong>68.92%</strong><meter min="0" max="1" value="0.689209726443769">68.92%</meter><small>907 / 1,316 picks</small></div>
 <!-- LIVE_SEASON_START -->
-<div><small>2026–27 · Transformer</small><strong>0 graded</strong><small>5 published picks awaiting results</small><p><a href="#season-2026">View season tracker</a></p></div>
+<div><small>2026–27 · Transformer</small><strong>60.0%</strong><small>3 / 5 correct · 4 pending</small><p><a href="#season-2026">View season tracker</a></p></div>
 <!-- LIVE_SEASON_END -->
 </div>
 <p>This demo refit reproduced 907 of 1,316
@@ -257,11 +225,15 @@ correct picks (68.92%) on 2025–26.</p>
 <p>Season accuracy is based on the next-day transformer picks published before tipoff. Results are added once final scores are verified.</p>
 <details><summary>Show season picks</summary>
 <table><thead><tr><th>Date (ET)</th><th>Matchup</th><th>Tip (ET)</th><th>Pick</th><th>Win probability</th><th>Result</th></tr></thead><tbody>
-<tr data-season-game-id="401910002"><td>Nov 17</td><th scope="row">New York Knicks at Toronto Raptors</th><td>7:30 PM</td><td>New York Knicks</td><td>80.0%</td><td>Pending</td></tr>
-<tr data-season-game-id="401910003"><td>Nov 17</td><th scope="row">Portland Trail Blazers at Minnesota Timberwolves</th><td>8:00 PM</td><td>Minnesota Timberwolves</td><td>57.8%</td><td>Pending</td></tr>
-<tr data-season-game-id="401910004"><td>Nov 17</td><th scope="row">Detroit Pistons at San Antonio Spurs</th><td>8:00 PM</td><td>San Antonio Spurs</td><td>78.4%</td><td>Pending</td></tr>
-<tr data-season-game-id="401910006"><td>Nov 17</td><th scope="row">Utah Jazz at LA Clippers</th><td>10:30 PM</td><td>LA Clippers</td><td>87.7%</td><td>Pending</td></tr>
-<tr data-season-game-id="401910005"><td>Nov 17</td><th scope="row">Charlotte Hornets at Los Angeles Lakers</th><td>11:00 PM</td><td>Los Angeles Lakers</td><td>88.3%</td><td>Pending</td></tr>
+<tr data-season-game-id="401910002"><td>Nov 17</td><th scope="row">New York Knicks at Toronto Raptors</th><td>7:30 PM</td><td>New York Knicks</td><td>80.0%</td><td>Correct · 111–102</td></tr>
+<tr data-season-game-id="401910003"><td>Nov 17</td><th scope="row">Portland Trail Blazers at Minnesota Timberwolves</th><td>8:00 PM</td><td>Minnesota Timberwolves</td><td>57.8%</td><td>Correct · 105–106</td></tr>
+<tr data-season-game-id="401910004"><td>Nov 17</td><th scope="row">Detroit Pistons at San Antonio Spurs</th><td>8:00 PM</td><td>San Antonio Spurs</td><td>78.4%</td><td>Miss · 105–93</td></tr>
+<tr data-season-game-id="401910006"><td>Nov 17</td><th scope="row">Utah Jazz at LA Clippers</th><td>10:30 PM</td><td>LA Clippers</td><td>87.7%</td><td>Miss · 132–107</td></tr>
+<tr data-season-game-id="401910005"><td>Nov 17</td><th scope="row">Charlotte Hornets at Los Angeles Lakers</th><td>11:00 PM</td><td>Los Angeles Lakers</td><td>88.3%</td><td>Correct · 114–118</td></tr>
+<tr data-season-game-id="401910019"><td>Nov 19</td><th scope="row">Golden State Warriors at Memphis Grizzlies</th><td>8:00 PM</td><td>Memphis Grizzlies</td><td>68.7%</td><td>Pending</td></tr>
+<tr data-season-game-id="401910020"><td>Nov 19</td><th scope="row">Portland Trail Blazers at Milwaukee Bucks</th><td>8:00 PM</td><td>Portland Trail Blazers</td><td>77.5%</td><td>Pending</td></tr>
+<tr data-season-game-id="401910021"><td>Nov 19</td><th scope="row">New York Knicks at Minnesota Timberwolves</th><td>8:00 PM</td><td>New York Knicks</td><td>67.8%</td><td>Pending</td></tr>
+<tr data-season-game-id="401910022"><td>Nov 19</td><th scope="row">LA Clippers at San Antonio Spurs</th><td>8:00 PM</td><td>San Antonio Spurs</td><td>80.5%</td><td>Pending</td></tr>
 </tbody></table>
 </details>
 <!-- LIVE_SEASON_LOG_END -->
