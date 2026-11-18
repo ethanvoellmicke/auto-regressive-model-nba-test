@@ -4,6 +4,8 @@
 <main><nav><a href="index.html">NBA predictions</a><a href="market-analysis.html" aria-current="page">Market analysis</a></nav>
 <h1>Model vs. market percentages</h1>
 <p>Basketball forecasts are generated independently. This page compares finished predictions with a separate Kalshi snapshot.</p>
+<section><details><summary>Compare model and market percentages</summary><p id="stamp"></p><p>Lineups are projected. Upcoming predictions and market percentages may change as new information arrives.</p><p id="coverage"></p>
+<div class="scroll"><table><thead><tr><th>Game</th><th>Team</th><th>Model win chance</th><th>Kalshi purchase-price percentage</th><th>Model minus market</th></tr></thead><tbody id="rows"></tbody></table></div></details></section>
 <section id="allocation"><h2>Tonight’s suggested games and amounts</h2>
 <p id="tonight-date"></p>
 <p><label>Amount to divide $ <input id="bankroll" type="number" min="0" max="1000000" value="100" step="1"></label> <button id="calculate" type="button">Show suggestions</button></p>
@@ -14,8 +16,6 @@
 <p>Divides the entered amount across up to three games, weighting each selected game by its estimated return per dollar after fees and a five-percentage-point probability deduction. The full amount is targeted. Any remainder comes from fees, whole-unit purchase sizes, or limited quoted availability. This allocation rule is a heuristic.</p>
 <p>Amounts include estimated taker fees, rounded up to a cent, and are capped to available quantity. Quotes older than 24 hours disable suggestions. Correlations between games are not modeled. <a href="https://kalshi.com/docs/kalshi-fee-schedule.pdf">Fee schedule</a></p>
 </details></section>
-<section><details><summary>Compare model and market percentages</summary><p id="stamp"></p><p>Lineups are projected. Upcoming predictions and market percentages may change as new information arrives.</p><p id="coverage"></p>
-<div class="scroll"><table><thead><tr><th>Game</th><th>Team</th><th>Model win chance</th><th>Kalshi purchase-price percentage</th><th>Model minus market</th></tr></thead><tbody id="rows"></tbody></table></div></details></section>
 
 <section><h2>Reading the comparison</h2>
 <p>The market percentage comes from the price available to buy that team’s win outcome. A price of 60¢ appears as 60%. The difference is measured in percentage points. A model estimate of 70% against a 60% purchase-price percentage gives +10 percentage points.</p>
