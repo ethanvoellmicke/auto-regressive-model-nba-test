@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>NBA market percentages</title>
-<style>body{font:16px system-ui;background:#f4f5f8;color:#182332;margin:0}main{max-width:1120px;margin:auto;padding:28px 18px}section{background:white;padding:22px;border-radius:14px;margin:18px 0}nav{display:flex;gap:20px}input,button{font:inherit;padding:6px;margin:4px}input{width:100px}table{width:100%;border-collapse:collapse}td,th{text-align:left;vertical-align:top;padding:10px;border-bottom:1px solid #dde2ea}.scroll{overflow-x:auto}small{color:#46556a}</style>
+<style>body{font:16px system-ui;background:#f4f5f8;color:#182332;margin:0}main{max-width:1120px;margin:auto;padding:28px 18px}section{background:white;padding:22px;border-radius:14px;margin:18px 0}nav{display:flex;gap:20px}input,button{font:inherit;padding:6px;margin:4px}input{width:100px}table{width:100%;border-collapse:collapse}td,th{text-align:left;vertical-align:top;padding:10px;border-bottom:1px solid #dde2ea}.scroll{overflow-x:auto}small{color:#46556a}#rows:not(.expanded) tr:nth-child(n+4){display:none}
+</style>
 <main><nav><a href="index.html">NBA predictions</a><a href="market-analysis.html" aria-current="page">Market analysis</a></nav>
 <h1>Model vs. market percentages</h1>
 <p>Basketball forecasts are generated independently. This page compares finished predictions with a separate Kalshi snapshot.</p>
-<section><details><summary>Compare model and market percentages</summary><p id="stamp"></p><p>Lineups are projected. Upcoming predictions and market percentages may change as new information arrives.</p><p id="coverage"></p>
-<div class="scroll"><table><thead><tr><th>Game</th><th>Team</th><th>Model win chance</th><th>Kalshi purchase-price percentage</th><th>Model minus market</th></tr></thead><tbody id="rows"></tbody></table></div></details></section>
+<section><h2>Compare model and market percentages</h2><p id="stamp"></p><p>Lineups are projected. Upcoming predictions and market percentages may change as new information arrives.</p><p id="coverage"></p>
+<div class="scroll"><table><thead><tr><th>Game</th><th>Team</th><th>Model win chance</th><th>Kalshi purchase-price percentage</th><th>Model minus market</th></tr></thead><tbody id="rows"></tbody></table></div><button id="show-comparisons" type="button" aria-expanded="false" aria-controls="rows">Show more comparisons ▾</button></section>
 <section id="allocation"><h2>Tonight’s suggested games and amounts</h2>
 <p id="tonight-date"></p>
 <p><label>Amount to divide $ <input id="bankroll" type="number" min="0" max="1000000" value="100" step="1"></label> <button id="calculate" type="button">Show suggestions</button></p>
@@ -47,6 +48,13 @@ function render(){
  document.getElementById("coverage").textContent=matched+" of "+games.length+" upcoming games have matching market percentages.";
 }
 render();
+const comparisonButton=document.getElementById("show-comparisons");
+comparisonButton.hidden=document.getElementById("rows").children.length<=3;
+comparisonButton.addEventListener("click",()=>{
+ const expanded=document.getElementById("rows").classList.toggle("expanded");
+ comparisonButton.setAttribute("aria-expanded",String(expanded));
+ comparisonButton.textContent=expanded?"Show fewer comparisons ▴":"Show more comparisons ▾";
+});
 
 const money=x=>new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(x);
 const fee=(n,price)=>Math.ceil((0.07*n*price*(1-price)-1e-10)*100)/100;
